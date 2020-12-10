@@ -1,3 +1,8 @@
+#Dataset INRIA Dataset 
+#Contain positive AND NEGATAIVE IMAGES
+#POS  - ALL HUMANS
+#NEG - OTHER THAN HUMANS IMAGES
+
 from getHogFeature import HOG
 from imutils import paths
 import cv2
@@ -16,6 +21,11 @@ desc =HOG(9)
 feature = []
 labels = []
 
+#Inside train - Human and Not Human Folders must be there
+# Human Folder shouldl contain all images of humans
+#Not Human should contain all other images except humans
+
+
 for imagePath in paths.list_images(args["train"]):
     print(imagePath)
     image = cv2.imread(imagePath)
@@ -28,6 +38,8 @@ for imagePath in paths.list_images(args["train"]):
 clf = LinearSVC(C=100.0 ,random_state=42)
 clf.fit(feature,labels)
 
+
+#Test should contain all the images to be tested
 for imagePath in paths.list_images(args["test"]):
     image = cv2.imread(imagePath)
     img = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
