@@ -1,4 +1,4 @@
-# GeekyProjects
+
 This is as simple project on Image Feature Extraction titled: Analaysis of Feature Extraction from given sample image.
 Here the sample image taken is of humans.
 
